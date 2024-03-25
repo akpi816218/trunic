@@ -5,7 +5,6 @@ export default function Rune(props: { color?: string; data: GlyphData }) {
 	const weight = 24;
 	return (
 		<svg
-			className="block h-32"
 			version="1.1"
 			viewBox="320 120 320 480"
 			fill="none"
@@ -161,12 +160,12 @@ export default function Rune(props: { color?: string; data: GlyphData }) {
 					fill={color}
 					d="m496.34683 568.46423l-10.393707 6.0l0 0c-5.740265 3.3137207 -13.079987 1.3465576 -16.393707 -4.393738c-3.3136902 -5.7402344 -1.3465576 -13.079956 4.3937073 -16.393677l10.393707 -6.0z"
 					fillRule="evenodd"
-					fillOpacity={data.segments.f ? 1 : 0}
+					fillOpacity={data.segments.a ? 1 : 0}
 				/>
 				<path
 					fill={color}
 					d="m590.1987 513.61804l10.393677 -6.0l0 0c5.7402954 -3.3137207 7.7073975 -10.653442 4.393738 -16.393707c-3.3137207 -5.7402954 -10.653442 -7.707428 -16.393738 -4.3937073l-10.393677 6.0z"
-					fillOpacity={data.segments.f ? 1 : 0}
+					fillOpacity={data.segments.a ? 1 : 0}
 					fillRule="evenodd"
 				/>
 				{/* <path

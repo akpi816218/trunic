@@ -50,11 +50,11 @@ export default function App() {
 
 	return (
 		<RootLayout>
-			<div className="flex flex-row">
+			<p className="flex flex-row">
 				{Chars.map(char => (
 					<Rune key={char.id} data={char} />
 				))}
-			</div>
+			</p>
 		</RootLayout>
 	);
 }

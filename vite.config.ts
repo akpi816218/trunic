@@ -13,7 +13,13 @@ export default defineConfig({
 	appType: 'mpa',
 	build: {
 		outDir: '../dist',
-		emptyOutDir: true
+		emptyOutDir: true,
+		rollupOptions: {
+			input: {
+				main: resolve(join(__dirname, 'src', 'index.html')),
+				svg: resolve(join(__dirname, 'src', 'svg.html'))
+			}
+		}
 	},
 	resolve: {
 		alias: {

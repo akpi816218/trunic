@@ -1,62 +1,29 @@
-import { GlyphData } from '../lib/types';
+import { useState } from 'react';
+import { renderGlyphsFromUnicode } from '../lib/renderer';
 import RootLayout from './_components/RootLayout';
-import Rune from './_components/Rune';
+import { Divider, Input } from '@nextui-org/react';
 
 export default function App() {
-	const Chars: GlyphData[] = [
-		{
-			consonant: true,
-			vowel: false,
-			id: '872',
-			phonetic: 'h',
-			segments: {
-				a: false,
-				b: false,
-				c: false,
-				d: false,
-				e: false,
-				f: true,
-				g: true,
-				h: false,
-				i: false,
-				j: true,
-				k: false,
-				l: true
-			},
-			inverted: false,
-			unicode: 'ᘇ'
-		},
-		{
-			id: '888',
-			phonetic: 'aɪ',
-			vowel: true,
-			consonant: false,
-			segments: {
-				a: false,
-				b: false,
-				c: false,
-				d: false,
-				e: true,
-				f: false,
-				g: false,
-				h: false,
-				i: false,
-				j: false,
-				k: false,
-				l: false
-			},
-			inverted: false,
-			unicode: 'ཏ'
-		}
-	];
+	const [input, setInput] = useState<string>('');
 
 	return (
 		<RootLayout>
-			<p className="flex flex-row">
-				{Chars.map(char => (
-					<Rune key={char.id} data={char} />
-				))}
-			</p>
+			<main className="p-16 lg:p-32 flex flex-col items-stretch justify-normal">
+				<Input
+					label="Unicode input"
+					placeholder="ᘇཏ ᘇཏ"
+					value={input}
+					onValueChange={setInput}
+				/>
+				<Divider className="h-1 my-8" />
+				<p className="flex flex-row *:max-h-8 lg:*:max-h-16">{render(input)}</p>
+			</main>
 		</RootLayout>
 	);
+
+	function render(s: string) {
+		try {
+			return renderGlyphsFromUnicode(s) ?? '';
+		} catch {}
+	}
 }

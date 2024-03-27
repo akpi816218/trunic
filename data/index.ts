@@ -1,4 +1,4 @@
-import { CharacterData } from '../lib/types';
+import { CharacterData, GlyphData } from '../lib/types';
 import MappedGlyphData from './dataMap.json';
 
 export const Chars: CharacterData[] = [
@@ -847,6 +847,29 @@ export const Chars: CharacterData[] = [
 export const Vowels = Chars.filter(v => v.vowel);
 
 export const Consonants = Chars.filter(v => v.consonant);
+
+export const SpaceGlyph: GlyphData = {
+	consonant: false,
+	vowel: false,
+	id: ' ',
+	phonetic: ' ',
+	inverted: false,
+	unicode: ' ',
+	segments: {
+		a: false,
+		b: false,
+		c: false,
+		d: false,
+		e: false,
+		f: false,
+		g: false,
+		h: false,
+		i: false,
+		j: false,
+		k: false,
+		l: false
+	}
+};
 
 export const Unicodes = `Ꭰ
 Ꭱ

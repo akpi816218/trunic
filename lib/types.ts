@@ -105,3 +105,8 @@ export interface GlyphData extends CharacterData {
 	 */
 	unicode: string;
 }
+
+/**
+ * Represents a number as a string
+ */
+export type NumString = string;

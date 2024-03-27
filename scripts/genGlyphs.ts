@@ -4,7 +4,7 @@ import { createServer } from 'vite';
 import { Glyphs } from '../data';
 
 const PORT = 5713;
-const StartValue = 427;
+// const StartValue = 0;
 
 const vite = await (await createServer()).listen(PORT);
 
@@ -19,11 +19,11 @@ const browser = await puppeteer.launch({
 const page = await browser.newPage();
 
 for (const glyph of Glyphs) {
-	if (parseInt(glyph.id) < StartValue) continue;
+	// if (parseInt(glyph.id) < StartValue) continue;
 
 	await page.goto(`http://localhost:${PORT}/svg?id=${glyph.id}`);
 	const ts = Date.now();
-	while (Date.now() - ts < 500) {}
+	while (Date.now() - ts < 100) {}
 	await writeFile(
 		`imgs/${glyph.id}.svg`,
 		(await page.evaluate(() => {

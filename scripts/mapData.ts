@@ -1,5 +1,5 @@
 import { writeFile } from 'fs/promises';
-import { Consonants, Unicodes, Vowels } from '../data';
+import { Consonants, Space, Unicodes, Vowels } from '../data';
 import { GlyphData } from '../lib/types';
 
 const shuffledUnicodes = shuffle(Unicodes);

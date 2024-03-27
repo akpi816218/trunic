@@ -1,11 +1,12 @@
 import { createRoot } from 'react-dom/client';
 import Rune from './_components/Rune';
 import { GlyphData } from '../lib/types';
+import map from '../data/dataMap.json';
 
-const data = new URLSearchParams(window.location.search).get('data');
-if (!data)
-	window.location.search = `data=${encodeURIComponent(window.prompt('data') ?? '')}`;
+const id = new URLSearchParams(window.location.search).get('id');
+if (!id)
+	window.location.search = `id=${encodeURIComponent(window.prompt('id') ?? '')}`;
 else
 	createRoot(document.body).render(
-		<p>{<Rune data={JSON.parse(decodeURIComponent(data)) as GlyphData} />}</p>
+		<p>{<Rune data={map.find(v => v.id === id)!} />}</p>
 	);

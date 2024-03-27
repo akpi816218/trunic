@@ -23,10 +23,11 @@ export default function App() {
 				k: false,
 				l: true
 			},
-			inverted: false
+			inverted: false,
+			unicode: 'ᘇ'
 		},
 		{
-			id: 'ai',
+			id: '888',
 			phonetic: 'aɪ',
 			vowel: true,
 			consonant: false,
@@ -44,7 +45,8 @@ export default function App() {
 				k: false,
 				l: false
 			},
-			inverted: false
+			inverted: false,
+			unicode: 'ཏ'
 		}
 	];
 

@@ -94,24 +94,14 @@ export interface CharacterData {
  */
 export type Word = CharacterData[];
 
-/**
- * Represents a map of a TRUNIC character to a unicode character
- */
-export interface CharMap {
-	/**
-	 * @property {string} glyph The ID of the TRUNIC character
-	 */
-	glyphId: string;
-
-	/**
-	 * @property {string} unicode The unicode representation of the character
-	 */
-	unicode: string;
-}
-
 export interface GlyphData extends CharacterData {
 	/**
 	 * @property {boolean} segments.inverted Wether the character has the top segment
 	 */
 	inverted: boolean;
+
+	/**
+	 * @property {string} unicode The unicode representation of the character
+	 */
+	unicode: string;
 }

@@ -6,7 +6,7 @@ export const config: Config = {
 		'./src/**/*.{html,tsx}',
 		'./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
 	],
-	darkMode: 'class',
+	darkMode: 'media',
 	theme: {
 		extend: {
 			animation: {

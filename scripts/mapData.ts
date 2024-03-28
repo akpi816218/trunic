@@ -1,5 +1,5 @@
 import { writeFile } from 'fs/promises';
-import { Consonants, Space, Unicodes, Vowels } from '../data';
+import { Consonants, Unicodes, Vowels } from '../data';
 import { GlyphData } from '../lib/types';
 
 const shuffledUnicodes = shuffle(Unicodes);
@@ -80,7 +80,7 @@ for (const vowel of Vowels)
 	});
 
 await writeFile(
-	'dataMap.json',
+	'data/dataMap.json',
 	JSON.stringify(
 		allPossibleGlyphs.map((g, i) => ({ ...g, unicode: shuffledUnicodes[i] }))
 	)

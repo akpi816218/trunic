@@ -1,6 +1,6 @@
 import Rune from '@/_components/Rune';
 import { GlyphData } from './types';
-import { parseCodes } from './parser';
+import { parseCodes, parsePhonetic } from './parser';
 import { ReactNode } from 'react';
 import { SpaceGlyph } from '../data';
 
@@ -17,6 +17,26 @@ export function renderGlyphsFromData(codes: GlyphData[][]): ReactNode[] {
 		);
 }
 
+export function phoneticFromData(codes: GlyphData[][]): string {
+	return codes
+		.map(word => word.map(data => data.phonetic).join(' / '))
+		.join(' // ');
+}
+
+export function unicodeFromPhonetic(str: string) {
+	return parsePhonetic(str)
+		.map(word => word.map(data => data.unicode).join(''))
+		.join(' ');
+}
+
+export function renderGlyphsFromPhonetic(str: string) {
+	return renderGlyphsFromData(parsePhonetic(str));
+}
+
 export function renderGlyphsFromUnicode(str: string) {
 	return renderGlyphsFromData(parseCodes(str));
+}
+
+export function phoneticFromUnicode(str: string) {
+	return phoneticFromData(parseCodes(str));
 }

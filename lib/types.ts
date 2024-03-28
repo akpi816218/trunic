@@ -92,7 +92,9 @@ export interface CharacterData {
 /**
  * Represents a word in the TRUNIC language, made of subcharacters
  */
-export type Word = CharacterData[];
+export type Word = GlyphData[];
+
+export type Sentence = Word[];
 
 export interface GlyphData extends CharacterData {
 	/**
@@ -110,3 +112,19 @@ export interface GlyphData extends CharacterData {
  * Represents a number as a string
  */
 export type NumString = string;
+
+export enum Segments {
+	A = 'a',
+	B = 'b',
+	C = 'c',
+	D = 'd',
+	E = 'e',
+	F = 'f',
+	G = 'g',
+	H = 'h',
+	I = 'i',
+	J = 'j',
+	K = 'k',
+	L = 'l',
+	Inverted = 'inverted'
+}

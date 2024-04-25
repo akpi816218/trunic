@@ -94,6 +94,18 @@ export interface CharacterData {
  */
 export type Word = GlyphData[];
 
+export interface GlyphKey {
+	/**
+	 * @property {number} indexW The index of the word in the sentence
+	 */
+	indexW: number;
+
+	/**
+	 * @property {number} indexG The index of the glyph in the word
+	 */
+	indexG: number;
+}
+
 export type Sentence = Word[];
 
 export interface GlyphData extends CharacterData {

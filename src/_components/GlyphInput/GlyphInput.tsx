@@ -1,28 +1,28 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SpaceGlyph } from '../../../data';
-import { GlyphData, Segments } from '../../../lib/types';
+import { GlyphData, GlyphKey, Segments } from '../../../lib/types';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 
 export default function GlyphInput({
 	data,
 	color = '#000000',
-	key,
+	index,
 	update,
 	del
 }: {
 	data: GlyphData | null;
 	color?: string;
-	key: string;
-	update: (key: string, data: GlyphData) => void;
-	del: (key: string) => void;
+	index: GlyphKey;
+	update: (key: GlyphKey, data: GlyphData) => void;
+	del: (key: GlyphKey) => void;
 }) {
 	const weight = 24,
 		disabledOpacity = 0.5;
 
 	return (
-		<div className="flex flex-col items-center">
+		<div className="flex flex-col items-center" key={index.indexW}>
 			<svg
-				key={key}
+				key={`${index.indexW}-${index.indexG}`}
 				version="1.1"
 				viewBox="320 120 320 480"
 				fill="none"
@@ -475,7 +475,7 @@ export default function GlyphInput({
 						<FontAwesomeIcon
 							icon={faTrash}
 							className="text-lg hidden group-hover:block"
-							onClick={() => del(key)}
+							onClick={() => del(index)}
 						/>
 					)}
 				</g>
@@ -489,7 +489,7 @@ export default function GlyphInput({
 
 	function toggleSegment(segment: Segments) {
 		if (!data) return;
-		update(key, {
+		update(index, {
 			...data,
 			segments: {
 				...data!.segments,

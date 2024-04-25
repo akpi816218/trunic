@@ -5,9 +5,9 @@ import {
 	renderGlyphsFromUnicode,
 	unicodeFromPhonetic
 } from '../lib/renderer';
-import RootLayout from './_components/RootLayout';
+import RootLayout from './_components/_layout/RootLayout';
 import { Divider, Input, Tab, Tabs } from '@nextui-org/react';
-import GlyphInputRow from './_components/GlyphInput/GlyphInputRow';
+import GlyphInputRow from './_components/GlyphInput/Sentence';
 
 export default function App() {
 	const [inputUnicode, setInputUnicode] = useState<string>('');

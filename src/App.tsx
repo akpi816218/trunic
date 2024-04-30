@@ -54,7 +54,7 @@ export default function App() {
 							<p>{P2U(inputPhonetic)}</p>
 						</div>
 					</Tab>
-					<Tab title="Glyph" key="g">
+					<Tab isDisabled title="Glyph" key="g">
 						<div>
 							<GlyphInputRow />
 						</div>

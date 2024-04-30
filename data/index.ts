@@ -143,7 +143,7 @@ export const Chars: CharacterData[] = [
 		}
 	},
 	{
-		id: 'ou',
+		id: 'u',
 		phonetic: 'ʊ',
 		vowel: true,
 		consonant: false,
@@ -453,8 +453,8 @@ export const Chars: CharacterData[] = [
 			c: false,
 			d: false,
 			e: false,
-			f: true,
-			g: false,
+			f: false,
+			g: true,
 			h: false,
 			i: true,
 			j: false,
@@ -644,7 +644,7 @@ export const Chars: CharacterData[] = [
 	},
 	{
 		id: 'd',
-		phonetic: 'e',
+		phonetic: 'd',
 		vowel: false,
 		consonant: true,
 		segments: {
@@ -655,8 +655,8 @@ export const Chars: CharacterData[] = [
 			e: false,
 			f: true,
 			g: false,
-			h: false,
-			i: true,
+			h: true,
+			i: false,
 			j: true,
 			k: false,
 			l: true
@@ -693,12 +693,12 @@ export const Chars: CharacterData[] = [
 			c: false,
 			d: false,
 			e: false,
-			f: true,
+			f: false,
 			g: true,
 			h: true,
 			i: false,
 			j: false,
-			k: false,
+			k: true,
 			l: true
 		}
 	},

@@ -38,7 +38,7 @@ export default function Rune(props: {
 					fillRule="evenodd"
 				/> */}
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={on(data.inverted)}
 							strokeLinejoin="round"
 							strokeLinecap="butt"
@@ -52,7 +52,7 @@ export default function Rune(props: {
 					fillRule="evenodd"
 				/> */}
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={on(data.segments.f)}
 							strokeLinejoin="round"
 							strokeLinecap="butt"
@@ -78,7 +78,7 @@ export default function Rune(props: {
 					fillRule="evenodd"
 				/> */}
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={on(data.segments.h)}
 							strokeLinejoin="round"
 							strokeLinecap="butt"
@@ -104,7 +104,7 @@ export default function Rune(props: {
 					fillRule="evenodd"
 				/> */}
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={on(data.segments.b)}
 							strokeLinejoin="round"
 							strokeLinecap="butt"
@@ -130,7 +130,7 @@ export default function Rune(props: {
 					fillRule="evenodd"
 				/> */}
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={on(data.segments.c)}
 							strokeLinejoin="round"
 							strokeLinecap="butt"
@@ -156,7 +156,7 @@ export default function Rune(props: {
 					fillRule="evenodd"
 				/> */}
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={on(data.segments.a)}
 							strokeLinejoin="round"
 							strokeLinecap="butt"
@@ -182,7 +182,7 @@ export default function Rune(props: {
 					fillRule="evenodd"
 				/> */}
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={on(data.segments.g)}
 							strokeLinejoin="round"
 							strokeLinecap="butt"
@@ -208,7 +208,7 @@ export default function Rune(props: {
 					fillRule="evenodd"
 				/> */}
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={on(data.segments.e)}
 							strokeLinejoin="round"
 							strokeLinecap="butt"
@@ -234,7 +234,7 @@ export default function Rune(props: {
 					fillRule="evenodd"
 				/> */}
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={on(data.segments.k)}
 							strokeLinejoin="round"
 							strokeLinecap="butt"
@@ -260,7 +260,7 @@ export default function Rune(props: {
 					fillRule="evenodd"
 				/> */}
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={on(data.segments.l)}
 							strokeLinejoin="round"
 							strokeLinecap="butt"
@@ -280,7 +280,7 @@ export default function Rune(props: {
 					fillRule="evenodd"
 				/> */}
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={on(data.segments.j)}
 							strokeLinejoin="round"
 							strokeLinecap="butt"
@@ -306,7 +306,7 @@ export default function Rune(props: {
 					fillRule="evenodd"
 				/> */}
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={on(data.segments.d)}
 							strokeLinejoin="round"
 							strokeLinecap="butt"
@@ -332,7 +332,7 @@ export default function Rune(props: {
 					fillRule="evenodd"
 				/> */}
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={on(data.segments.i)}
 							strokeLinejoin="round"
 							strokeLinecap="butt"
@@ -358,7 +358,7 @@ export default function Rune(props: {
 							fillRule="evenodd"
 						/>
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={24}
 							strokeLinejoin="round"
 							strokeLinecap="butt"
@@ -382,7 +382,7 @@ export default function Rune(props: {
 					fillRule="evenodd"
 				/> */}
 						<path
-							stroke={color}
+							className="stroke-black dark:stroke-white"
 							strokeWidth={on(data.segments.c)}
 							strokeLinejoin="round"
 							strokeLinecap="butt"

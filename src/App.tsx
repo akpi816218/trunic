@@ -15,14 +15,16 @@ export default function App() {
 
 	return (
 		<RootLayout>
-			<main className="p-16 lg:p-32 flex flex-col items-stretch justify-normal">
+			<main className="dark:bg-black dark:text-white min-h-screen p-16 lg:p-32 flex flex-col items-stretch justify-normal">
 				<Tabs
 					size="lg"
-					classNames={{
-						base: 'self-center'
-					}}
+					classNames={
+						{
+							// base: 'self-center'
+						}
+					}
 				>
-					<Tab name="Unicode" key="u">
+					<Tab title="Unicode" key="u">
 						<div>
 							<Input
 								label="Unicode input"
@@ -37,7 +39,7 @@ export default function App() {
 							<p>{U2P(inputUnicode)}</p>
 						</div>
 					</Tab>
-					<Tab name="Phonetic" key="p">
+					<Tab title="Phonetic" key="p">
 						<div>
 							<Input
 								label="Phonetic input"
@@ -52,7 +54,7 @@ export default function App() {
 							<p>{P2U(inputPhonetic)}</p>
 						</div>
 					</Tab>
-					<Tab name="Glyph" key="g">
+					<Tab title="Glyph" key="g">
 						<div>
 							<GlyphInputRow />
 						</div>

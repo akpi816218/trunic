@@ -11,7 +11,7 @@ export default function Rune(props: {
 		<svg
 			key={props.key}
 			version="1.1"
-			viewBox="320 120 320 480"
+			viewBox="320 100 320 500"
 			fill="none"
 			stroke="none"
 			strokeLinecap="square"

@@ -6,7 +6,7 @@ import {
 	unicodeFromPhonetic
 } from '../lib/renderer';
 import RootLayout from './_components/_layout/RootLayout';
-import { Divider, Input, Tab, Tabs } from '@nextui-org/react';
+import { Divider, Input, Spacer, Tab, Tabs } from '@nextui-org/react';
 import GlyphInputRow from './_components/GlyphInput/Sentence';
 
 export default function App() {
@@ -33,10 +33,11 @@ export default function App() {
 								onValueChange={setInputUnicode}
 							/>
 							<Divider className="h-1 my-8" />
-							<p className="flex flex-row *:max-h-8 lg:*:max-h-16">
+							<p className="flex flex-row *:max-h-8 lg:*:max-h-16 text-xl">
 								{U2G(inputUnicode)}
 							</p>
-							<p>{U2P(inputUnicode)}</p>
+							<Spacer y={2} />
+							<p className="text-xl">{U2P(inputUnicode)}</p>
 						</div>
 					</Tab>
 					<Tab title="Phonetic" key="p">
@@ -48,10 +49,11 @@ export default function App() {
 								onValueChange={setInputPhonetic}
 							/>
 							<Divider className="h-1 my-8" />
-							<p className="flex flex-row *:max-h-8 lg:*:max-h-16">
+							<p className="flex flex-row *:max-h-8 lg:*:max-h-16 text-xl">
 								{P2G(inputPhonetic)}
 							</p>
-							<p>{P2U(inputPhonetic)}</p>
+							<Spacer y={2} />
+							<p className="text-xl">{P2U(inputPhonetic)}</p>
 						</div>
 					</Tab>
 					<Tab isDisabled title="Glyph" key="g">

@@ -49,7 +49,7 @@ export default function App() {
 								onValueChange={setInputPhonetic}
 							/>
 							<Divider className="h-1 my-8" />
-							<p className="flex flex-row *:max-h-8 lg:*:max-h-16 text-xl">
+							<p className="flex flex-row *:max-h-24 lg:*:max-h-32 text-xl">
 								{P2G(inputPhonetic)}
 							</p>
 							<Spacer y={2} />

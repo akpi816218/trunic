@@ -3,9 +3,10 @@ import { Sentence, Word } from '../../../lib/types';
 import WordComponent from './Word';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons/faPlusCircle';
+import { SpaceGlyph } from '../../../data';
 
 export default function SentenceComponent({
-	data = [],
+	data = [[SpaceGlyph]],
 	color = '#000000',
 	update
 }: {
@@ -16,7 +17,7 @@ export default function SentenceComponent({
 	const [sentence, setSentence] = useState(data);
 
 	return (
-		<span>
+		<div>
 			{...sentence
 				.map((word, i) => (
 					<WordComponent
@@ -28,12 +29,11 @@ export default function SentenceComponent({
 					/>
 				))
 				.concat(
-					<div className="flex flex-col items-center">
-						{/* @ts-expect-error */}
+					<div className="flex flex-col items-center hover:scale-110">
 						<FontAwesomeIcon icon={faPlusCircle} />
 					</div>
 				)}
-		</span>
+		</div>
 	);
 
 	function onChange(index: number, word: Word) {

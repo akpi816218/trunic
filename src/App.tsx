@@ -8,22 +8,23 @@ import {
 import RootLayout from './_components/_layout/RootLayout';
 import { Divider, Input, Spacer, Tab, Tabs } from '@nextui-org/react';
 import GlyphInputRow from './_components/GlyphInput/Sentence';
+import GlyphInput from './_components/GlyphInput/GlyphInput';
+import { Consonants, Glyphs, SpaceGlyph } from '../data';
+import { GlyphData } from '../lib/types';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function App() {
 	const [inputUnicode, setInputUnicode] = useState<string>('');
 	const [inputPhonetic, setInputPhonetic] = useState<string>('');
+	const [inputGlyph, setInputGlyph] = useState<GlyphData>(
+		Glyphs.find(g => g.phonetic === 'h-aɪ')!
+	);
 
 	return (
 		<RootLayout>
 			<main className="dark:bg-black dark:text-white min-h-screen p-16 lg:p-32 flex flex-col items-stretch justify-normal">
-				<Tabs
-					size="lg"
-					classNames={
-						{
-							// base: 'self-center'
-						}
-					}
-				>
+				<Toaster position="top-right" />
+				<Tabs size="lg">
 					<Tab title="Unicode" key="u">
 						<div>
 							<Input
@@ -37,7 +38,23 @@ export default function App() {
 								{U2G(inputUnicode)}
 							</p>
 							<Spacer y={2} />
-							<p className="text-xl">{U2P(inputUnicode)}</p>
+							<p
+								className="text-xl"
+								onClick={() =>
+									toast.promise(
+										window.navigator.clipboard.writeText(
+											U2P(inputUnicode) ?? ''
+										),
+										{
+											loading: 'Copying...',
+											success: 'Copied!',
+											error: 'Failed to copy'
+										}
+									)
+								}
+							>
+								{U2P(inputUnicode)}
+							</p>
 						</div>
 					</Tab>
 					<Tab title="Phonetic" key="p">
@@ -53,12 +70,69 @@ export default function App() {
 								{P2G(inputPhonetic)}
 							</p>
 							<Spacer y={2} />
-							<p className="text-xl">{P2U(inputPhonetic)}</p>
+							<p
+								className="text-xl"
+								onClick={() =>
+									toast.promise(
+										window.navigator.clipboard.writeText(
+											P2U(inputPhonetic) ?? ''
+										),
+										{
+											loading: 'Copying...',
+											success: 'Copied!',
+											error: 'Failed to copy'
+										}
+									)
+								}
+							>
+								{P2U(inputPhonetic)}
+							</p>
 						</div>
 					</Tab>
-					<Tab isDisabled title="Glyph" key="g">
+					<Tab
+						/**
+						isDisabled
+					*/ title="Glyph"
+						key="g"
+					>
 						<div>
-							<GlyphInputRow />
+							<GlyphInput
+								index={null}
+								data={inputGlyph}
+								update={(_, data) => setInputGlyph(data)}
+							/>
+							<Divider className="h-1 my-8" />
+							<p
+								className="text-xl"
+								onClick={() =>
+									toast.promise(
+										window.navigator.clipboard.writeText(inputGlyph.phonetic),
+										{
+											loading: 'Copying...',
+											success: 'Copied!',
+											error: 'Failed to copy'
+										}
+									)
+								}
+							>
+								{inputGlyph.phonetic}
+							</p>
+							<Spacer y={2} />
+							<p
+								className="text-xl"
+								onClick={() =>
+									toast.promise(
+										window.navigator.clipboard.writeText(inputGlyph.unicode),
+										{
+											loading: 'Copying...',
+											success: 'Copied!',
+											error: 'Failed to copy'
+										}
+									)
+								}
+							>
+								{inputGlyph.unicode}
+							</p>
 						</div>
 					</Tab>
 				</Tabs>

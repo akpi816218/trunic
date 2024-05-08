@@ -4,27 +4,35 @@ import { GlyphData, GlyphKey, Segments } from '../../../lib/types';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 
 export default function GlyphInput({
-	data,
+	data = SpaceGlyph,
 	color = '#000000',
 	index,
 	update,
 	del
-}: {
-	data: GlyphData | null;
-	color?: string;
-	index: GlyphKey;
-	update: (key: GlyphKey, data: GlyphData) => void;
-	del: (key: GlyphKey) => void;
-}) {
+}:
+	| {
+			data: GlyphData;
+			color?: string;
+			index: GlyphKey;
+			update: (key: GlyphKey, data: GlyphData) => void;
+			del: (key: GlyphKey) => void;
+	  }
+	| {
+			data?: GlyphData;
+			color?: string;
+			index: null;
+			update?: (key: null, data: GlyphData) => void;
+			del?: null;
+	  }) {
 	const weight = 24,
 		disabledOpacity = 0.5;
 
 	return (
-		<div className="flex flex-col items-center" key={index.indexW}>
+		<div className="flex flex-col items-center max-h-48" key={index?.indexW}>
 			<svg
-				key={`${index.indexW}-${index.indexG}`}
+				key={`${index?.indexW}-${index?.indexG}`}
 				version="1.1"
-				viewBox="320 120 320 480"
+				viewBox="320 145 320 500"
 				fill="none"
 				stroke="none"
 				strokeLinecap="square"
@@ -56,7 +64,7 @@ export default function GlyphInput({
 							<path
 								stroke={color}
 								strokeOpacity={data.inverted ? 1 : disabledOpacity}
-								strokeWidth={on(data.inverted)}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m458.3937 592.80316l0 0c0 -11.932861 9.673462 -21.606323 21.606293 -21.606323l0 0c5.7303467 0 11.225983 2.2763672 15.277954 6.328369c4.0519714 4.051941 6.3283386 9.547607 6.3283386 15.277954l0 0c0 11.9328 -9.673462 21.606262 -21.606293 21.606262l0 0c-11.932831 0 -21.606293 -9.673462 -21.606293 -21.606262z"
@@ -72,7 +80,7 @@ export default function GlyphInput({
 							<path
 								stroke={color}
 								strokeOpacity={data.segments.f ? 1 : disabledOpacity}
-								strokeWidth={on(data.segments.f)}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m479.3697 429.12314l115.18109 67.212616"
@@ -102,7 +110,7 @@ export default function GlyphInput({
 							<path
 								stroke={color}
 								strokeOpacity={data.segments.h ? 1 : disabledOpacity}
-								strokeWidth={on(data.segments.h)}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m480.0 429.12314l-115.18109 67.212616"
@@ -132,7 +140,7 @@ export default function GlyphInput({
 							<path
 								stroke={color}
 								strokeOpacity={data.segments.b ? 1 : disabledOpacity}
-								strokeWidth={on(data.segments.b)}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m480.0 564.5413l-115.18109 -67.212585"
@@ -162,7 +170,7 @@ export default function GlyphInput({
 							<path
 								stroke={color}
 								strokeOpacity={data.segments.c ? 1 : disabledOpacity}
-								strokeWidth={on(data.segments.c)}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m364.9239 430.43307l-0.03149414 68.75589"
@@ -192,7 +200,7 @@ export default function GlyphInput({
 							<path
 								stroke={color}
 								strokeOpacity={data.segments.a ? 1 : disabledOpacity}
-								strokeWidth={on(data.segments.a)}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m479.30746 564.5413l115.18112 -67.212585"
@@ -222,7 +230,7 @@ export default function GlyphInput({
 							<path
 								stroke={color}
 								strokeOpacity={data.segments.g ? 1 : disabledOpacity}
-								strokeWidth={on(data.segments.g)}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m480.06693 430.431l-0.03149414 134.3937"
@@ -252,7 +260,7 @@ export default function GlyphInput({
 							<path
 								stroke={color}
 								strokeOpacity={data.segments.e ? 1 : disabledOpacity}
-								strokeWidth={on(data.segments.e)}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m479.3697 165.12315l115.18109 67.2126"
@@ -282,7 +290,7 @@ export default function GlyphInput({
 							<path
 								stroke={color}
 								strokeOpacity={data.segments.k ? 1 : disabledOpacity}
-								strokeWidth={on(data.segments.k)}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m479.30746 300.54132l115.18112 -67.212585"
@@ -312,7 +320,7 @@ export default function GlyphInput({
 							<path
 								stroke={color}
 								strokeOpacity={data.segments.l ? 1 : disabledOpacity}
-								strokeWidth={on(data.segments.l)}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m480.0656 300.46457l-0.03149414 68.75589"
@@ -335,7 +343,7 @@ export default function GlyphInput({
 							<path
 								stroke={color}
 								strokeOpacity={data.segments.j ? 1 : disabledOpacity}
-								strokeWidth={on(data.segments.j)}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m480.06693 166.43102l-0.03149414 134.39369"
@@ -365,7 +373,7 @@ export default function GlyphInput({
 							<path
 								stroke={color}
 								strokeOpacity={data.segments.d ? 1 : disabledOpacity}
-								strokeWidth={on(data.segments.d)}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m480.0 165.12315l-115.18109 67.2126"
@@ -395,7 +403,7 @@ export default function GlyphInput({
 							<path
 								stroke={color}
 								strokeOpacity={data.segments.i ? 1 : disabledOpacity}
-								strokeWidth={on(data.segments.i)}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m480.0 300.54132l-115.18109 -67.212585"
@@ -424,7 +432,7 @@ export default function GlyphInput({
 							/>
 							<path
 								stroke={color}
-								strokeWidth={24}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m594.746 360.0132l-230.3937 -0.03149414"
@@ -449,7 +457,7 @@ export default function GlyphInput({
 							<path
 								stroke={color}
 								strokeOpacity={data.segments.c ? 1 : disabledOpacity}
-								strokeWidth={on(data.segments.c)}
+								strokeWidth={weight}
 								strokeLinejoin="round"
 								strokeLinecap="butt"
 								d="m364.9252 239.61511l-0.03149414 122.86615"
@@ -475,7 +483,7 @@ export default function GlyphInput({
 						<FontAwesomeIcon
 							icon={faTrash}
 							className="text-lg hidden group-hover:block"
-							onClick={() => del(index)}
+							onClick={() => del && index && del(index)}
 						/>
 					)}
 				</g>
@@ -483,18 +491,25 @@ export default function GlyphInput({
 		</div>
 	);
 
-	function on(bool: boolean) {
-		return bool ? weight : 0;
-	}
-
 	function toggleSegment(segment: Segments) {
-		if (!data) return;
-		update(index, {
-			...data,
-			segments: {
-				...data!.segments,
-				[segment]: !data.segments[segment as keyof typeof data.segments]
-			}
-		});
+		if (!data || !update) return;
+		if (index === null)
+			update(index, {
+				...data,
+				segments: {
+					...data.segments,
+					[segment]: !data.segments[segment as keyof typeof data.segments]
+				},
+				inverted: segment === Segments.Inverted ? !data.inverted : data.inverted
+			});
+		else
+			update(index, {
+				...data,
+				segments: {
+					...data!.segments,
+					[segment]: !data.segments[segment as keyof typeof data.segments]
+				},
+				inverted: segment === Segments.Inverted ? !data.inverted : data.inverted
+			});
 	}
 }

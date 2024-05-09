@@ -1,7 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Glyphs, SpaceGlyph } from '../../../data';
-import { GlyphData, GlyphKey, Segments } from '../../../lib/types';
+import {
+	GlyphKey,
+	PartialGlyphData,
+	PossiblyPartialGlyphData,
+	SegmentData,
+	Segments
+} from '../../../lib/types';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { isConsonant, isVowel } from '../../../lib/util';
 
 export default function GlyphInput({
 	data = SpaceGlyph,
@@ -11,17 +18,17 @@ export default function GlyphInput({
 	del
 }:
 	| {
-			data: Partial<GlyphData>;
+			data: PossiblyPartialGlyphData;
 			color?: string;
 			index: GlyphKey;
-			update: (key: GlyphKey, data: Partial<GlyphData>) => void;
+			update: (key: GlyphKey, data: PossiblyPartialGlyphData) => void;
 			del: (key: GlyphKey) => void;
 	  }
 	| {
-			data?: Partial<GlyphData>;
+			data?: PossiblyPartialGlyphData;
 			color?: string;
 			index: null;
-			update?: (key: null, data: Partial<GlyphData>) => void;
+			update?: (key: null, data: PossiblyPartialGlyphData) => void;
 			del?: null;
 	  }) {
 	const weight = 24,
@@ -493,29 +500,32 @@ export default function GlyphInput({
 
 	function toggleSegment(segment: Segments) {
 		if (!data || !update) return;
-		const d = {
-			...data,
-			segments: {
-				...data.segments,
-				[segment]: !data.segments![
-					segment as keyof typeof data.segments
-				] as boolean
-			},
-			inverted: segment === Segments.Inverted ? !data.inverted : data.inverted
-		} as Partial<GlyphData>;
-		const newGlyph = Glyphs.find(
-			g =>
-				Object.keys(g.segments).every(
-					seg =>
-						g.segments[seg as keyof typeof g.segments] ===
-						d.segments![seg as keyof typeof d.segments]
-				) && g.inverted === d.inverted
-		) || {
-			...d,
-			phonetic: undefined,
-			unicode: undefined
+		const segments: SegmentData = {
+			...data.segments,
+			[segment]: !data.segments![
+				segment as keyof typeof data.segments
+			] as boolean
 		};
-		if (index === null) update(index, newGlyph);
-		else update(index, newGlyph);
+		const d: PartialGlyphData = {
+			...data,
+			segments,
+			inverted: segment === Segments.Inverted ? !data.inverted : data.inverted,
+			unicode: undefined,
+			phonetic: undefined,
+			id: undefined,
+			vowel: isVowel(segments),
+			consonant: isConsonant(segments)
+		};
+		const newGlyph: PossiblyPartialGlyphData =
+			Glyphs.find(
+				g =>
+					Object.keys(g.segments).every(
+						seg =>
+							g.segments[seg as keyof typeof g.segments] ===
+							d.segments![seg as keyof typeof d.segments]
+					) && g.inverted === d.inverted
+			) || d;
+		// @ts-expect-error update fn will take null or GlyphKey index conditionally (see params typedef)
+		update(index, newGlyph);
 	}
 }

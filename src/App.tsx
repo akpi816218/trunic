@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import {
+	PossiblyPartialGlyphData,
 	phoneticFromUnicode,
 	renderGlyphsFromPhonetic,
 	renderGlyphsFromUnicode,
 	unicodeFromPhonetic
-} from '../lib/renderer';
+} from '../lib';
 import RootLayout from './_components/_layout/RootLayout';
 import { Divider, Input, Spacer, Tab, Tabs } from '@nextui-org/react';
 import GlyphInput from './_components/GlyphInput/GlyphInput';
 import { Glyphs } from '../data';
-import { GlyphData } from '../lib/types';
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function App() {
 	const [inputUnicode, setInputUnicode] = useState<string>('');
 	const [inputPhonetic, setInputPhonetic] = useState<string>('');
-	const [inputGlyph, setInputGlyph] = useState<Partial<GlyphData> | undefined>(
+	const [inputGlyph, setInputGlyph] = useState<PossiblyPartialGlyphData>(
 		Glyphs.find(g => g.phonetic === 'h-aɪ')!
 	);
 
@@ -98,16 +98,13 @@ export default function App() {
 							<GlyphInput
 								index={null}
 								data={inputGlyph}
-								update={(_, data) => {
-									setInputGlyph(data);
-									console.log(data);
-								}}
+								update={(_, data) => setInputGlyph(data)}
 							/>
 							<Divider className="h-1 my-8" />
 							<p
 								className="text-xl"
 								onClick={() =>
-									inputGlyph?.phonetic &&
+									inputGlyph.phonetic &&
 									toast.promise(
 										window.navigator.clipboard.writeText(inputGlyph.phonetic),
 										{

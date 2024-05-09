@@ -2778,4 +2778,4 @@ export const Unicodes = `Ꭰ
 	.split('')
 	.filter(v => v !== '\n');
 
-export const Glyphs = MappedGlyphData;
+export const Glyphs: GlyphData[] = MappedGlyphData;

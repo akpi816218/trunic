@@ -9,10 +9,11 @@ import {
 } from '../../../lib/types';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { isConsonant, isVowel } from '../../../lib/util';
+import { useIsClassDark } from '@/_hooks';
 
 export default function GlyphInput({
 	data = SpaceGlyph,
-	color = '#000000',
+	color = useIsClassDark() ? '#ffffff' : '#000000',
 	index,
 	update,
 	del

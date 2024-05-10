@@ -42,7 +42,7 @@ jobs:
       - name: Build with Vite
         run: npm urn build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 

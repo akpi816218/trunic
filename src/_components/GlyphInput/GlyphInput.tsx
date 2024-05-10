@@ -33,7 +33,7 @@ export default function GlyphInput({
 			del?: null;
 	  }) {
 	const weight = 24,
-		disabledOpacity = 0.5;
+		disabledOpacity = 0.25;
 
 	return (
 		<div className="flex flex-col items-center max-h-48" key={index?.indexW}>
